@@ -36,4 +36,4 @@ class DB:
         users_session = User(email=email, hashed_password=hashed_password)
         self._session.add(users_session)
         self._session.commit()
-        return User
+        return User()

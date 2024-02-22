@@ -8,14 +8,18 @@ User Model
 
 from sqlalchemy import *
 from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy.orm import Session
 
 Base = declarative_base()
+
+
+session = Session()
 
 
 class User(Base):
     """User class"""
     __tablename__ = "users"
-    id = Column(Integer, primary_key=True)
+    id = Column(Integer, primary_key=True, autoincrement="auto")
     email = Column(String(250), nullable=False)
     hashed_password = Column(String(250), nullable=False)
     session_id = Column(String(250), nullable=True)
