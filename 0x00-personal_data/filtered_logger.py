@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Defines a logger with custom log formatter
+Defines a logger
 """
 import os
 import re
@@ -35,14 +35,14 @@ class RedactingFormatter(logging.Formatter):
 
     def __init__(self, fields: List[str]):
         """
-        Instantiation method, sets fields for each instance
+        Initialization
         """
         super(RedactingFormatter, self).__init__(self.FORMAT)
         self.fields = fields
 
     def format(self, record: logging.LogRecord) -> str:
         """
-        Formats the LogRecord instance
+        Formats LogRecord
         """
         log = super(RedactingFormatter, self).format(record=record)
         return filter_datum(self.fields, self.REDACTION, log, self.SEPARATOR)
@@ -63,7 +63,7 @@ def get_logger() -> logging.Logger:
 
 def get_db() -> mysql.connector.connection.MySQLConnection:
     """
-    Connects to a mysql database
+    Connects to mysql database
     """
     connector = mysql.connector.connect(
         host=os.getenv('PERSONAL_DATA_DB_HOST'),

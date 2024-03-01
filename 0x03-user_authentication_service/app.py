@@ -31,7 +31,7 @@ def unauthorized(error) -> str:
 @app.route("/")
 def home() -> str:
     """Home route"""
-    return jsonify({"message": "Bienvenue"})
+    return "<h1>john</h1>"
 
 
 @app.route('/users', methods=['POST'])
@@ -78,3 +78,7 @@ def profile():
     if user:
         return jsonify({"email": user.email})
     abort(403)
+
+
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", port="5000")
